@@ -1,7 +1,8 @@
-package com.sxkj.a0550;
+package com.sxkj.a0550.activity;
 
 import android.os.Bundle;
 
+import com.sxkj.a0550.R;
 import com.sxkj.a0550.activity.base.BaseActivity;
 import com.sxkj.a0550.bean.Person;
 import com.sxkj.a0550.common.ConstantValue;

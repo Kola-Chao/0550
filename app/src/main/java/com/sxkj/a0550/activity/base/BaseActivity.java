@@ -2,10 +2,8 @@ package com.sxkj.a0550.activity.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
 
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -15,13 +13,12 @@ import butterknife.Unbinder;
 public class BaseActivity extends FragmentActivity {
     protected Context mContext;
     protected Unbinder unbinder;
+    protected String TAG = "TestTang";
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         mContext = this;
-        unbinder = ButterKnife.bind(this);
-
     }
 
     @Override
