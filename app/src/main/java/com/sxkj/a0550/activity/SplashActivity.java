@@ -1,9 +1,10 @@
 package com.sxkj.a0550.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.sxkj.a0550.R;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -29,8 +31,10 @@ public class SplashActivity extends BaseActivity {
 
     @BindView(R.id.splash_vp)
     ViewPager splashVp;
+    @BindView(R.id.splash_btn)
+    Button splashBtn;
 
-    private ParallaxPageTransformer transformer;
+    private ViewPager.PageTransformer transformer;
     private MyViewPageAdapter adapter;
     private ArrayList<View> views;
 
@@ -76,7 +80,7 @@ public class SplashActivity extends BaseActivity {
     private void initVP() {
         adapter = new MyViewPageAdapter(views);
         transformer = new ParallaxPageTransformer();
-//        splashVp.setPageTransformer(false, transformer);
+        splashVp.setPageTransformer(true, transformer);
         splashVp.setAdapter(adapter);
         splashVp.setCurrentItem(1);
         splashVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -89,7 +93,6 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Log.i(TAG, "onPageSelected: " + position);
                 if (position == (views.size() - 1)) {
                     p = 1;
                 } else if (position == 0) {
@@ -107,4 +110,14 @@ public class SplashActivity extends BaseActivity {
         });
     }
 
+    @OnClick({R.id.splash_btn})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.splash_btn:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+            default:
+                break;
+        }
+    }
 }
