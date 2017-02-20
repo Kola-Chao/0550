@@ -14,6 +14,7 @@ import com.sxkj.a0550.R;
 import com.sxkj.a0550.activity.pic.PicMainActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,6 +61,28 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemCount() {
         return 0;
+    }
+
+    public void setOnFeedItemClickListener(OnFeedItemClickListener onFeedItemClickListener) {
+        this.onFeedItemClickListener = onFeedItemClickListener;
+    }
+
+    public void updateItems(boolean animated) {
+        feedItems.clear();
+        feedItems.addAll(Arrays.asList(
+                new FeedItem(33, false),
+                new FeedItem(1, false),
+                new FeedItem(223, false),
+                new FeedItem(2, false),
+                new FeedItem(6, false),
+                new FeedItem(8, false),
+                new FeedItem(99, false)
+        ));
+        if (animated) {
+            notifyItemRangeInserted(0, feedItems.size());
+        } else {
+            notifyDataSetChanged();
+        }
     }
 
     private void setupClickableViews(final View view, final CellFeedViewHolder cellFeedViewHolder) {
