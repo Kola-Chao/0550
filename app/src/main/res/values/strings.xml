@@ -1,4 +1,8 @@
 <resources>
+    <plurals name="likes_count">
+        <item quantity="one">%d like</item>
+        <item quantity="other">%d likes</item>
+    </plurals>
     <string name="app_name">0550</string>
     <string name="splash_btn_txt">点击进入</string>
 </resources>
