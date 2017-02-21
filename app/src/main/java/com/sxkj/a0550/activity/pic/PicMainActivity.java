@@ -113,6 +113,6 @@ public class PicMainActivity extends AppCompatActivity implements FeedAdapter.On
 
     @Override
     public void onCancelClick(int feedItem) {
-
+        FeedContextMenuManager.getInstance().hideContextMenu();
     }
 }
