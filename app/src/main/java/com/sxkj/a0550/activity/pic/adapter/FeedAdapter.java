@@ -37,6 +37,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final List<FeedItem> feedItems = new ArrayList<>();
     private Context context;
     private OnFeedItemClickListener onFeedItemClickListener;
+    private boolean showLoadingView = false;
 
     public FeedAdapter(Context context) {
         this.context = context;
@@ -55,12 +56,24 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((CellFeedViewHolder) holder).bindView(feedItems.get(position));
+        if (getItemViewType(position) == VIEW_TYPE_LOADER) {
 
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return feedItems == null ? 0 : feedItems.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (showLoadingView && position == 0) {
+            return VIEW_TYPE_LOADER;
+        } else {
+            return VIEW_TYPE_DEFAULT;
+        }
     }
 
     public void setOnFeedItemClickListener(OnFeedItemClickListener onFeedItemClickListener) {

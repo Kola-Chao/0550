@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Time   :15:45
  */
 
-public class PicMainActivity extends FragmentActivity implements FeedAdapter.OnFeedItemClickListener,
+public class PicMainActivity extends AppCompatActivity implements FeedAdapter.OnFeedItemClickListener,
         FeedContextMenu.OnFeedContextMenuItemClickListener {
     public static final String ACTION_SHOW_LOADING_ITEM = "action_show_loading_item";
 
@@ -49,11 +49,11 @@ public class PicMainActivity extends FragmentActivity implements FeedAdapter.OnF
         ButterKnife.bind(this);
         setupFeed();
 
-        if (savedInstanceState == null) {
-            pendingIntroAnimation = true;
-        } else {
-            feedAdapter.updateItems(false);
-        }
+//        if (savedInstanceState == null) {
+//            pendingIntroAnimation = true;
+//        } else {
+        feedAdapter.updateItems(false);
+//        }
     }
 
     private void setupFeed() {
@@ -88,7 +88,7 @@ public class PicMainActivity extends FragmentActivity implements FeedAdapter.OnF
 
     @Override
     public void onMoreClick(View v, int position) {
-
+        FeedContextMenuManager.getInstance().toggleContextMenuFromView(v, position, this);
     }
 
     @Override

@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_feed_top" />
 
-        <io.github.froger.instamaterial.ui.view.SquaredFrameLayout
+
+        <com.sxkj.a0550.activity.pic.ui.SquaredFrameLayout
             android:id="@+id/vImageRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -45,7 +46,7 @@
                 android:src="@drawable/ic_heart_outline_white"
                 android:visibility="invisible" />
 
-        </io.github.froger.instamaterial.ui.view.SquaredFrameLayout>
+        </com.sxkj.a0550.activity.pic.ui.SquaredFrameLayout>
 
         <ImageView
             android:id="@+id/ivFeedBottom"
