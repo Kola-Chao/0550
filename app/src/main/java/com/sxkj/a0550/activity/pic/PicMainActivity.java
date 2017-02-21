@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,6 +14,7 @@ import com.sxkj.a0550.R;
 import com.sxkj.a0550.activity.pic.adapter.FeedAdapter;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -23,7 +24,7 @@ import butterknife.BindView;
  * Time   :15:45
  */
 
-public class PicMainActivity extends AppCompatActivity implements FeedAdapter.OnFeedItemClickListener,
+public class PicMainActivity extends FragmentActivity implements FeedAdapter.OnFeedItemClickListener,
         FeedContextMenu.OnFeedContextMenuItemClickListener {
     public static final String ACTION_SHOW_LOADING_ITEM = "action_show_loading_item";
 
@@ -45,6 +46,7 @@ public class PicMainActivity extends AppCompatActivity implements FeedAdapter.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pic_main);
+        ButterKnife.bind(this);
         setupFeed();
 
         if (savedInstanceState == null) {
