@@ -143,25 +143,25 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class CellFeedViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.ivFeedCenter)
-        ImageView ivFeedCenter;
+        public ImageView ivFeedCenter;
         @BindView(R.id.ivFeedBottom)
-        ImageView ivFeedBottom;
+        public ImageView ivFeedBottom;
         @BindView(R.id.btnComments)
-        ImageButton btnComments;
+        public ImageButton btnComments;
         @BindView(R.id.btnLike)
-        ImageButton btnLike;
+        public ImageButton btnLike;
         @BindView(R.id.btnMore)
-        ImageButton btnMore;
+        public ImageButton btnMore;
         @BindView(R.id.vBgLike)
-        View vBgLike;
+        public View vBgLike;
         @BindView(R.id.ivLike)
-        ImageView ivLike;
+        public ImageView ivLike;
         @BindView(R.id.tsLikesCounter)
-        TextSwitcher tsLikesCounter;
+        public TextSwitcher tsLikesCounter;
         @BindView(R.id.ivUserProfile)
-        ImageView ivUserProfile;
+        public ImageView ivUserProfile;
         @BindView(R.id.vImageRoot)
-        FrameLayout vImageRoot;
+        public FrameLayout vImageRoot;
 
         FeedItem feedItem;
 
