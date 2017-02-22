@@ -74,7 +74,7 @@ public class PicMainActivity extends AppCompatActivity implements FeedAdapter.On
                 FeedContextMenuManager.getInstance().onScrolled(recyclerView, dx, dy);
             }
         });
-//        rvFeed.setItemAnimator(new FeedItemAnimator());
+        rvFeed.setItemAnimator(new FeedItemAnimator());
     }
 
     public void showLikedSnackbar() {

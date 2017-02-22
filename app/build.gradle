@@ -22,12 +22,18 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    
+
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+    compile('com.squareup.retrofit2:retrofit:2.0.0-beta4') { exclude group: 'com.squareup.okhttp3' }
+    compile('com.squareup.retrofit2:converter-gson:2.0.0-beta4') {
+        exclude group: 'com.google.code.gson'
+        exclude group: 'com.squareup.okhttp3'
+    }
+    compile('com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4') {
+        exclude group: 'io.reactivex'
+        exclude group: 'com.squareup.okhttp3'
+    }
     compile 'com.google.code.gson:gson:2.6.2'
     //butterknife
     compile 'com.jakewharton:butterknife:8.5.1'
@@ -62,7 +68,9 @@ dependencies {
     //bmob-im：Bmob的即时通讯包，注意每个版本的im依赖特定版本的bmob-sdk，具体的依赖关系可查看下面注释[3]
     compile 'cn.bmob.android:bmob-im:2.0.4'
     compile 'cn.bmob.android:androidasync:2.1.6'
-    compile 'cn.bmob.android:bmob-sdk:3.4.6'
+    compile('cn.bmob.android:bmob-sdk:3.4.6') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'//从模块中删除
+    }
     //注：别忘记导入3.4.6的相关依赖包[2]
 
     //bmob-sms ：Bmob单独为短信服务提供的包
