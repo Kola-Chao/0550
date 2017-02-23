@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -19,6 +20,7 @@ public class BaseActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        unbinder = ButterKnife.bind(this);
     }
 
     @Override

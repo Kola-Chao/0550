@@ -147,4 +147,14 @@ public abstract class BaseApi<T> implements Func1<BaseResultEntity<T>, T> {
     public void setCookieNoNetWorkTime(int cookieNoNetWorkTime) {
         this.cookieNoNetWorkTime = cookieNoNetWorkTime;
     }
+
+    /**
+     * 得到请求的全路径
+     *
+     * @return
+     */
+    public String getUrl() {
+        return baseUrl + method;
+    }
 }
+

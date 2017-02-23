@@ -4,6 +4,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
+
 /**
  * Introduce:
  * Author  : tangchao
@@ -21,10 +22,36 @@ public class CookieResulte {
     //时间
     private long time;
 
-    public CookieResulte(String url, String result, long time) {
-        this.url = url;
-        this.result = result;
+    public long getTime() {
+        return this.time;
+    }
+
+    public void setTime(long time) {
         this.time = time;
+    }
+
+    public String getResult() {
+        return this.result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getUrl() {
+        return this.url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Generated(hash = 1542439357)
@@ -39,35 +66,4 @@ public class CookieResulte {
     public CookieResulte() {
     }
 
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return this.url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getResult() {
-        return this.result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public long getTime() {
-        return this.time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
 }

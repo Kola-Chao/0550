@@ -1,6 +1,7 @@
 package com.sxkj.a0550.activity;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.sxkj.a0550.R;
 import com.sxkj.a0550.activity.base.BaseActivity;
@@ -8,12 +9,17 @@ import com.sxkj.a0550.bean.Person;
 import com.sxkj.a0550.common.ConstantValue;
 import com.sxkj.a0550.utils.Utils;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobConfig;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.GetListener;
 
 public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.button)
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-        bmobQuery.addWhereEqualTo("name","asd");
+        bmobQuery.addWhereEqualTo("name", "asd");
     }
 
     /**
@@ -85,5 +91,9 @@ public class MainActivity extends BaseActivity {
 //                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT);
 //            }
 //        });
+    }
+
+    @OnClick(R.id.button)
+    public void onClick() {
     }
 }
