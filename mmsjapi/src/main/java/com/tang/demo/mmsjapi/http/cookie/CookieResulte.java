@@ -54,6 +54,12 @@ public class CookieResulte {
         this.id = id;
     }
 
+    public CookieResulte(String url, String result, long time) {
+        this.url = url;
+        this.result = result;
+        this.time = time;
+    }
+
     @Generated(hash = 1542439357)
     public CookieResulte(long id, String url, String result, long time) {
         this.id = id;

@@ -3,6 +3,8 @@ package com.tang.demo.mmsjapi.http;
 import android.app.ProgressDialog;
 
 import com.tang.demo.mmsjapi.api.BaseApi;
+import com.tang.demo.mmsjapi.excaption.RetryWhenNetworkException;
+import com.tang.demo.mmsjapi.http.cookie.CookieInterceptor;
 import com.tang.demo.mmsjapi.subscribers.ProgressSubscriber;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
@@ -46,7 +48,7 @@ public class HttpManager {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(baseApi.getConnectionTime(), TimeUnit.SECONDS);//设置超时时间
         if (baseApi.isCache()) {
-//            builder.addInterceptor(new );
+            builder.addInterceptor(new CookieInterceptor(baseApi.isCache(), baseApi.getUrl()));
         }
         //创建retrofit对象
         Retrofit retrofit = new Retrofit.Builder()
@@ -60,7 +62,7 @@ public class HttpManager {
         ProgressSubscriber subscriber = new ProgressSubscriber(baseApi);
         rx.Observable observable = baseApi.getObservable(retrofit)
                 //失败处理
-//                .retryWhen(new RetryWh)
+                .retryWhen(new RetryWhenNetworkException())
                 //生命周期管理
                 .compose(baseApi.getRxAppCompatActivity().bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io())
