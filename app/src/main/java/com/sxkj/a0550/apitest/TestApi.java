@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sxkj.a0550.R;
+import com.tang.demo.mmsjapi.bean.BaseResultEntity;
 import com.tang.demo.mmsjapi.http.HttpManager;
 import com.tang.demo.mmsjapi.listener.HttpOnNextListener;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import butterknife.BindView;
@@ -63,7 +67,11 @@ public class TestApi extends RxAppCompatActivity {
 
         @Override
         public void onCacheNext(String string) {
-            super.onCacheNext(string);
+            Gson gson = new Gson();
+            Type type = new TypeToken<BaseResultEntity<List<SubjectResult>>>() {
+            }.getType();
+            BaseResultEntity resultEntity = gson.fromJson(string, type);
+            resyltTxt.setText("缓存返回" + resultEntity.getData().toString());
         }
 
         @Override

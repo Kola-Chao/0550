@@ -24,8 +24,8 @@ public class SubjectPostApi extends BaseApi {
         setCache(true);
         setCancel(true);
         setMethod("AppFiftyToneGraph/videoLink");
-        setCookieNetWorkTime(60);
-        setCookieNoNetWorkTime(24 * 60 * 60);
+        setCookieNetWorkTime(10);
+        setCookieNoNetWorkTime(30);
     }
 
     @Override

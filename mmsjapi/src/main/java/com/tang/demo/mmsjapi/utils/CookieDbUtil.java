@@ -78,11 +78,26 @@ public class CookieDbUtil {
 
     /**
      * 初始化CookieResulteDao
+     * Write
      *
      * @return
      */
-    private CookieResulteDao initCookieResulteDao() {
+    private CookieResulteDao initCookieResulteDaoWritable() {
         daoMaster = new DaoMaster(getWritableDatabase());
+        daoSession = daoMaster.newSession();
+        downInfoDao = daoSession.getCookieResulteDao();
+        return downInfoDao;
+    }
+
+
+    /**
+     * 初始化CookieResulteDao
+     * Read
+     *
+     * @return
+     */
+    private CookieResulteDao initCookieResulteDaoReadable() {
+        daoMaster = new DaoMaster(getReadableDatabase());
         daoSession = daoMaster.newSession();
         downInfoDao = daoSession.getCookieResulteDao();
         return downInfoDao;
@@ -112,7 +127,7 @@ public class CookieDbUtil {
      * @param info
      */
     public void saveCookie(CookieResulte info) {
-        initCookieResulteDao();
+        initCookieResulteDaoWritable();
         if (downInfoDao != null) {
             downInfoDao.insert(info);
         }
@@ -124,7 +139,7 @@ public class CookieDbUtil {
      * @param info
      */
     public void updateCookie(CookieResulte info) {
-        initCookieResulteDao();
+        initCookieResulteDaoWritable();
         if (downInfoDao != null) {
             downInfoDao.update(info);
         }
@@ -136,7 +151,7 @@ public class CookieDbUtil {
      * @param info
      */
     public void deleteCookie(CookieResulte info) {
-        initCookieResulteDao();
+        initCookieResulteDaoWritable();
         if (downInfoDao != null) {
             downInfoDao.delete(info);
         }
@@ -149,7 +164,7 @@ public class CookieDbUtil {
      * @return
      */
     public CookieResulte queryCookieBy(String url) {
-        initCookieResulteDao();
+        initCookieResulteDaoReadable();
         if (downInfoDao != null) {
             QueryBuilder<CookieResulte> qb = downInfoDao.queryBuilder();
             qb.where(CookieResulteDao.Properties.Url.eq(url));
@@ -170,7 +185,7 @@ public class CookieDbUtil {
      * @return
      */
     public List<CookieResulte> queryAllCookies() {
-        initCookieResulteDao();
+        initCookieResulteDaoReadable();
         if (downInfoDao != null) {
             QueryBuilder<CookieResulte> qb = downInfoDao.queryBuilder();
             return qb.list();
