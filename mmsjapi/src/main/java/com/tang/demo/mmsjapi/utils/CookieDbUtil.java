@@ -4,10 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.tang.demo.mmsjapi.RxRetrofitApp;
+import com.tang.demo.mmsjapi.download.bean.DaoMaster;
+import com.tang.demo.mmsjapi.download.bean.DaoSession;
 import com.tang.demo.mmsjapi.http.cookie.CookieResulte;
 import com.tang.demo.mmsjapi.http.cookie.CookieResulteDao;
-import com.tang.demo.mmsjapi.http.cookie.DaoMaster;
-import com.tang.demo.mmsjapi.http.cookie.DaoSession;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 

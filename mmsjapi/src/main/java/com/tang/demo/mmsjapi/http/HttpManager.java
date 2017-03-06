@@ -3,6 +3,7 @@ package com.tang.demo.mmsjapi.http;
 
 import com.tang.demo.mmsjapi.api.BaseApi;
 import com.tang.demo.mmsjapi.excaption.RetryWhenNetworkException;
+import com.tang.demo.mmsjapi.factory.DecodeConverterFactory;
 import com.tang.demo.mmsjapi.http.cookie.CookieInterceptor;
 import com.tang.demo.mmsjapi.subscribers.ProgressSubscriber;
 import com.trello.rxlifecycle.android.ActivityEvent;
@@ -12,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -51,7 +51,7 @@ public class HttpManager {
         //创建retrofit对象
         Retrofit retrofit = new Retrofit.Builder()
                 .client(builder.build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(DecodeConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(baseApi.getBaseUrl())
                 .build();

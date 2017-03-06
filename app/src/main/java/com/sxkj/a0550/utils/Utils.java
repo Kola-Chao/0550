@@ -10,8 +10,16 @@ import android.widget.Toast;
  */
 
 public class Utils {
+    public static Context mcxt;
+
     public static void showToast(String string, Context context) {
+        if (mcxt == null) return;
         Toast.makeText(context, string, Toast.LENGTH_SHORT);
+    }
+
+    public static void showToast(String string) {
+        if (mcxt == null) return;
+        Toast.makeText(mcxt, string, Toast.LENGTH_SHORT).show();
     }
 
 }

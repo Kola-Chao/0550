@@ -8,16 +8,21 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sxkj.a0550.R;
 import com.tang.demo.mmsjapi.bean.BaseResultEntity;
+import com.tang.demo.mmsjapi.factory.DecodeConverterFactory;
 import com.tang.demo.mmsjapi.http.HttpManager;
 import com.tang.demo.mmsjapi.listener.HttpOnNextListener;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 /**
  * Introduce: 网络请求的测试类
@@ -41,7 +46,8 @@ public class TestApi extends RxAppCompatActivity {
 
     @OnClick(R.id.button2)
     public void onClick() {
-        simpleDao();
+        test1();
+//        simpleDao();
     }
 
     /**
@@ -52,6 +58,20 @@ public class TestApi extends RxAppCompatActivity {
 //        postEntity.set
         HttpManager manaer = HttpManager.getInstance();
         manaer.doHttpDeal(postEntity);
+    }
+
+    private void test1() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(5, TimeUnit.SECONDS);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(builder.build())
+                .addConverterFactory(DecodeConverterFactory.create())
+                .baseUrl("http://www.izaodao.com/Api/")
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        HttpPostService service = retrofit.create(HttpPostService.class);
+        service.getAllVideo(true);
     }
 
     HttpOnNextListener simpleOnNestListener = new HttpOnNextListener<List<SubjectResult>>() {

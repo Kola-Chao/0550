@@ -6,7 +6,6 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -22,6 +21,6 @@ public interface HttpPostService {
     Call<RetrofitEntity> getAllVideo(@Body boolean once_no);
 
 
-    @GET("AppFiftyToneGraph/videoLink/{once_no}")
+    @POST("AppFiftyToneGraph/videoLink/{once_no}")
     rx.Observable<BaseResultEntity<List<SubjectResult>>> getAllVideoBys(@Query("once_no") boolean once_no);
 }

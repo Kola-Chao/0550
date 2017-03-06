@@ -15,7 +15,6 @@ import com.sxkj.a0550.vp.ParallaxPageTransformer;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -41,10 +40,13 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splashlayout);
-        ButterKnife.bind(this);
         initFakeViews();
         initVP();
+    }
+
+    @Override
+    public void initLayout() {
+        setContentView(R.layout.splashlayout);
     }
 
     /**
